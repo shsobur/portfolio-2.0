@@ -1,0 +1,86 @@
+.ghost-button {
+  position: relative;
+  background: linear-gradient(135deg, #2c1810, #1a0d08);
+  border: 2px solid #d60808;
+  border-radius: 12px;
+  padding: 15px 30px;
+  font-family: "Creepster", cursive, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px #ff0000;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 15px rgba(229, 10, 10, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.ghost-icon {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 24px;
+  animation: ghostFloat 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px #fff);
+}
+
+.button-text {
+  display: inline-block;
+}
+
+/* Variants */
+.ghost-button-demonic {
+  border-color: red;
+  color: red;
+  text-shadow: 0 0 8px red;
+  box-shadow: 0 0 12px red inset;
+}
+
+.ghost-button-spectral {
+  border-color: cyan;
+  color: cyan;
+  text-shadow: 0 0 8px cyan;
+  box-shadow: 0 0 12px cyan inset;
+}
+
+/* Hover effects */
+.ghost-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px #ff0000, inset 0 1px 0 #ffffff33;
+}
+
+.ghost-button:hover .ghost-icon {
+  animation-duration: 0.5s;
+  transform: scale(1.2);
+}
+
+/* Active/pressed state */
+.pressed {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px #8b0000cc, inset 0 2px 4px #00000080;
+}
+
+/* Ghost icon float animation */
+@keyframes ghostFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ghost-button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  .ghost-icon {
+    font-size: 20px;
+  }
+}

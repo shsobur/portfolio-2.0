@@ -8,7 +8,34 @@
   justify-content: center;
 }
 
-.error_video_container video {
+.error_video_container {
   height: 300px;
-  width: 500px;
+  width: 800px;
+  /* ------ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video_end_style {
+  display: none;
+}
+
+.error_message {
+  text-align: center;
+}
+
+.error_message h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.error_message p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.error_message {
+
 }
