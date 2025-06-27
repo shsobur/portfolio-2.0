@@ -33,7 +33,7 @@ const GhostButton = ({
       onMouseDown={() => setIsPressed(true)}
       onMouseUp={() => setIsPressed(false)}
       onMouseLeave={() => setIsPressed(false)}
-      onClick={onClick}
+      onClick={ onClick}
       {...props}
     >
       <span className="ghost-icon">{variant === "demonic" ? "👹" : "🌙"}</span>
