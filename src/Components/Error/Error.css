@@ -75,3 +75,35 @@
   font-size: 20px;
   margin-bottom: 20px;
 }
+
+/* Error image style__ */
+
+.error_image_container {
+  position: relative;
+}
+
+.error_image_one {
+  z-index: 499;
+  top: 50%;
+  left: -60%;
+  cursor: not-allowed;
+  position: absolute;
+}
+
+.error_image_two {
+  z-index: 499;
+  top: 50%;
+  right: -60%;
+  cursor: not-allowed;
+  position: absolute;
+}
+
+/* Home button__ */
+
+.error_home_button {
+  font-size: 1.5rem;
+}
+
+.error_home_button:hover {
+  text-decoration: underline;
+}
