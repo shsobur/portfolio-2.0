@@ -17,25 +17,27 @@ const Error = () => {
   const [isDear, setIsDear] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
+  // Check localStorage when component first mounts to see if user visited before__
   useEffect(() => {
     const hasMounted = localStorage.getItem("mount");
     if (hasMounted === "1") {
       setIsMounted(true);
-      console.log("Already mounted before");
     }
   }, []);
 
+  // Called when the current video ends__
   const handleVideoEnd = () => {
     setIsVideoEnded(true);
-    console.log(isVideoEnded);
   };
 
+  // Called when user clicks the GhostButton__
   const handleButton = () => {
     setIsDear(true);
     localStorage.setItem("mount", "1");
     setIsVideoEnded(false);
   };
 
+  // Navigate user when clicks "Go Home" button__
   const handleBackButton = () => {
     navigate("/");
   };
@@ -64,7 +66,9 @@ const Error = () => {
                     className="error_message"
                   >
                     {!isDear && (
-                      <h2 className="bloody_text">404 - Page Not Found</h2>
+                      <h2 className="bloody_text">
+                        Error : 404 - Page Not Found
+                      </h2>
                     )}
                     {!isDear && (
                       <p>
@@ -77,7 +81,7 @@ const Error = () => {
                         onClick={handleBackButton}
                         className="error_home_button"
                       >
-                        Go home
+                        Go home baby {"->"}
                       </button>
                     ) : (
                       <div onClick={handleButton}>
@@ -121,7 +125,7 @@ const Error = () => {
                 data-aos-duration="1200"
                 className="error_message"
               >
-                <h2 className="bloody_text">404 - Page Not Found</h2>
+                <h2 className="bloody_text">Error : 404 - Page Not Found</h2>
 
                 <p>
                   Oops! The page you’re looking for doesn’t exist. <br />
@@ -132,7 +136,7 @@ const Error = () => {
                   onClick={handleBackButton}
                   className="error_home_button"
                 >
-                  Go Home🍼
+                  Go Home🍼 <br></br> Not a safe place_
                 </button>
               </div>
             )}

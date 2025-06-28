@@ -1,6 +1,7 @@
 .main_error_container {
   width: 100%;
   height: 100vh;
+  position: relative;
   background-color: #000000;
   /* ------ */
   display: flex;
@@ -25,15 +26,15 @@
   text-align: center;
 }
 
-.bloody_text {
-  font-size: 3rem;
-  font-weight: 700;
+.error_message p {
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
 .bloody_text {
   font-family: "Creepster", cursive;
-  font-size: 64px;
+  font-size: 4rem;
+  font-weight: 700;
   color: #ea0505;
   text-shadow: 0 0 5px #8b0000, 0 0 10px #8b0000, 2px 2px 0 #000,
     4px 4px 0 #300000;
@@ -43,6 +44,7 @@
 }
 
 /* Optional: dripping blood animation */
+
 .bloody_text::after {
   content: "";
   position: absolute;
@@ -71,34 +73,25 @@
   }
 }
 
-.error_message p {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
 /* Error image style__ */
 
-.error_image_container {
-  position: relative;
-}
-
 .error_image_one {
-  z-index: 499;
-  top: 50%;
-  left: -60%;
-  cursor: not-allowed;
   position: absolute;
+  cursor: not-allowed;
+  z-index: 499;
+  bottom: 10%;
+  left: 2%;
 }
 
 .error_image_two {
-  z-index: 499;
-  top: 50%;
-  right: -60%;
-  cursor: not-allowed;
   position: absolute;
+  cursor: not-allowed;
+  z-index: 499;
+  bottom: 10%;
+  right: 2%;
 }
 
-/* Home button__ */
+/* Navigate button__ */
 
 .error_home_button {
   font-size: 1.5rem;
@@ -106,4 +99,32 @@
 
 .error_home_button:hover {
   text-decoration: underline;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1536px) {
+  .error_video_container {
+    width: 750px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .error_video_container {
+    width: 700px;
+  }
+
+  .bloody_text {
+    font-size: 3rem;
+  }
+
+  .error_image_one {
+    width: 200px;
+    bottom: 8%;
+  }
+
+  .error_image_two {
+    width: 200px;
+    bottom: 8%;
+  }
 }
