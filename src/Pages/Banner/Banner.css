@@ -1,0 +1,152 @@
+#banner_section {
+  max-width: 1920px;
+  margin: auto;
+  color: #333232;
+  position: relative;
+  background-color: #010101;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+/* Absolute content - 01 */
+
+.absolute_content_one {
+  position: absolute;
+  z-index: 201;
+  top: 4.8%;
+  left: 2%;
+  color: #ffffff;
+  font-size: 6rem;
+  font-weight: 700;
+  line-height: 90px;
+  cursor: pointer;
+}
+
+/* Absolute content - 02 */
+
+.absolute_content_two {
+  position: absolute;
+  z-index: 201;
+  right: 2%;
+  bottom: 4.8%;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.8rem;
+  line-height: 80px;
+  cursor: pointer;
+}
+
+/* ==== Color Themes ==== */
+
+/* Brownish */
+:root {
+  --background-color: #6e5e60;
+
+  /* Settings */
+  --shadow-scale: 1.1;
+  --letter-spacing: 0.3em;
+  --initial-skew: -40deg;
+  --hover-skew: -10deg;
+  --animation-duration: 0.3s;
+
+  /* Auto settings */
+  --shadow-initial-skew: 20deg;
+  --shadow-hover-skew: 5deg;
+}
+
+/* ==== General Styles ==== */
+
+p {
+  color: #fff;
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+  /* font-size: 2rem; */
+}
+
+/* === 3D Text Shadow Effect === */
+
+p span {
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 500;
+  -webkit-font-smoothing: antialiased;
+}
+
+p span::before,
+p span::after {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: -1px;
+  transform-origin: left top;
+  transition: all ease-out var(--animation-duration);
+  content: attr(data-text);
+}
+
+p span::before {
+  z-index: 1;
+  color: #00000033;
+  transform: scale(var(--shadow-scale), 1)
+    skew(0deg, var(--shadow-initial-skew));
+}
+
+p span::after {
+  z-index: 2;
+  color: var(--background-color);
+  text-shadow: -1px 0 1px var(--background-color), 1px 0 1px #000000cc;
+  transform: rotateY(var(--initial-skew));
+}
+
+p span:hover::before {
+  transform: scale(var(--shadow-scale), 1) skew(0deg, var(--shadow-hover-skew));
+}
+
+p span:hover::after {
+  transform: rotateY(var(--hover-skew));
+}
+
+p span + span {
+  margin-left: var(--letter-spacing);
+}
+
+/* ==== Responsive Font Sizes ==== */
+
+@media (min-width: 20em) {
+  p {
+    font-size: 2em;
+  }
+
+  p span::before,
+  p span::after {
+    display: block;
+  }
+}
+
+@media (min-width: 30em) {
+  p {
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 40em) {
+  p {
+    font-size: 5em;
+  }
+}
+
+@media (min-width: 60em) {
+  p {
+    font-size: 8em;
+  }
+}
+
+/* Absolute content - 03 */
+
+.absolute_content_three {
+  height: 500px;
+  width: 500px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 250px);
+  right: calc(50% - 250px);
+}

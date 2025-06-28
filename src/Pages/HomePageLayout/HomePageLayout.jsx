@@ -1,7 +1,11 @@
+import Banner from "../Banner/Banner";
+
 const HomePageLayout = () => {
   return (
     <>
-      <section>Hello this is home section!</section>
+      <section>
+        <Banner></Banner>
+      </section>
     </>
   );
 };

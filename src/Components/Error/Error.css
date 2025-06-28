@@ -32,30 +32,30 @@
 }
 
 .bloody_text {
-  font-family: "Creepster", cursive;
+  margin: 20px 0;
   font-size: 4rem;
   font-weight: 700;
   color: #ea0505;
-  text-shadow: 0 0 5px #8b0000, 0 0 10px #8b0000, 2px 2px 0 #000,
-    4px 4px 0 #300000;
   position: relative;
   display: inline-block;
-  margin: 20px 0;
+  font-family: "Creepster", cursive;
+  text-shadow: 0 0 5px #8b0000, 0 0 10px #8b0000, 2px 2px 0 #000,
+  4px 4px 0 #300000;
 }
 
 /* Optional: dripping blood animation */
 
 .bloody_text::after {
+  width: 6px;
+  height: 20px;
   content: "";
   position: absolute;
   left: 50%;
   bottom: -15px;
-  width: 6px;
-  height: 20px;
-  background: linear-gradient(to bottom, #ff0000, #8b0000);
   border-radius: 50%;
-  animation: blood-drip 1.5s infinite ease-in-out;
   transform: translateX(-50%);
+  animation: blood-drip 1.5s infinite ease-in-out;
+  background: linear-gradient(to bottom, #ff0000, #8b0000);
 }
 
 @keyframes blood-drip {
