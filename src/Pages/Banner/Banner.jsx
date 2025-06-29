@@ -1,7 +1,8 @@
-import Circle from "../../Components/ComOfBanner/Circle/Circle";
-import CircularText from "../../Components/ComOfBanner/CircularText/CircularText";
-import SquaresBG from "../../Components/ComOfBanner/SquaresBG/SquaresBG";
+// File path__
 import "./Banner.css";
+import Circle from "../../Components/ComOfBanner/Circle/Circle";
+import SquaresBG from "../../Components/ComOfBanner/SquaresBG/SquaresBG";
+import CircularText from "../../Components/ComOfBanner/CircularText/CircularText";
 
 const Banner = () => {
   return (
@@ -17,29 +18,13 @@ const Banner = () => {
               data-aos-duration="1500"
               className="absolute_content_one"
             >
-              MERN STAKE WEB_ <br /> DEVELOPER
+              <h1>
+                MERN STAKE WEB_ <br /> DEVELOPER
+              </h1>
             </div>
 
-            <div
-              data-aos="fade-up"
-              data-aos-easing="linear"
-              data-aos-duration="1500"
-              className="absolute_content_two"
-            >
-              <p aria-label="CodePen">
-                <span data-text="S">S</span>
-                <span data-text="O">O</span>
-                <span data-text="B">B</span>
-                <span data-text="U">U</span>
-                <span data-text="R">R</span>
-                <span></span>
-                <span data-text="H">H</span>
-                <span data-text="O">O</span>
-                <span data-text="S">S</span>
-                <span data-text="S">S</span>
-                <span data-text="E">E</span>
-                <span data-text="N">N</span>
-              </p>
+            <div className="absolute_content_two">
+              <h1>SOBUR HOSSEN</h1>
             </div>
 
             <div className="absolute_content_three">

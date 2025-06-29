@@ -16,7 +16,7 @@
   top: 4.8%;
   left: 2%;
   color: #ffffff;
-  font-size: 6rem;
+  font-size: 5.5rem;
   font-weight: 700;
   line-height: 90px;
   cursor: pointer;
@@ -28,116 +28,42 @@
   position: absolute;
   z-index: 201;
   right: 2%;
-  bottom: 4.8%;
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.8rem;
-  line-height: 80px;
+  bottom: 4%;
+  font-size: 5.5rem;
   cursor: pointer;
+  line-height: 80px;
+  animation: slideUp 1.5s ease-out;
 }
 
-/* ==== Color Themes ==== */
+/* Animation keyframes */
+@keyframes slideUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-/* Brownish */
 :root {
-  --background-color: #6e5e60;
-
-  /* Settings */
-  --shadow-scale: 1.1;
-  --letter-spacing: 0.3em;
-  --initial-skew: -40deg;
-  --hover-skew: -10deg;
-  --animation-duration: 0.3s;
-
-  /* Auto settings */
-  --shadow-initial-skew: 20deg;
-  --shadow-hover-skew: 5deg;
+  --color-background: #000119;
+  --stroke-width: calc(1em / 16);
+  --font-size: 30vmin;
+  --font-weight: 700;
+  --letter-spacing: calc(1em / 8);
 }
 
-/* ==== General Styles ==== */
 
-p {
-  color: #fff;
-  font-family: "Avenir Next", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
-  /* font-size: 2rem; */
-}
-
-/* === 3D Text Shadow Effect === */
-
-p span {
-  display: inline-block;
-  position: relative;
-  transform-style: preserve-3d;
-  perspective: 500;
-  -webkit-font-smoothing: antialiased;
-}
-
-p span::before,
-p span::after {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: -1px;
-  transform-origin: left top;
-  transition: all ease-out var(--animation-duration);
-  content: attr(data-text);
-}
-
-p span::before {
-  z-index: 1;
-  color: #00000033;
-  transform: scale(var(--shadow-scale), 1)
-    skew(0deg, var(--shadow-initial-skew));
-}
-
-p span::after {
-  z-index: 2;
-  color: var(--background-color);
-  text-shadow: -1px 0 1px var(--background-color), 1px 0 1px #000000cc;
-  transform: rotateY(var(--initial-skew));
-}
-
-p span:hover::before {
-  transform: scale(var(--shadow-scale), 1) skew(0deg, var(--shadow-hover-skew));
-}
-
-p span:hover::after {
-  transform: rotateY(var(--hover-skew));
-}
-
-p span + span {
-  margin-left: var(--letter-spacing);
-}
-
-/* ==== Responsive Font Sizes ==== */
-
-@media (min-width: 20em) {
-  p {
-    font-size: 2em;
-  }
-
-  p span::before,
-  p span::after {
-    display: block;
-  }
-}
-
-@media (min-width: 30em) {
-  p {
-    font-size: 3em;
-  }
-}
-
-@media (min-width: 40em) {
-  p {
-    font-size: 5em;
-  }
-}
-
-@media (min-width: 60em) {
-  p {
-    font-size: 8em;
-  }
+.absolute_content_two h1 {
+  background-clip: text;
+  color: var(--color-background);
+  font-weight: var(--font-weight);
+  letter-spacing: var(--letter-spacing);
+  -webkit-text-stroke-color: transparent;
+  -webkit-text-stroke-width: var(--stroke-width);
+  background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
 }
 
 /* Absolute content - 03 */
@@ -185,4 +111,29 @@ p span + span {
   padding-left: 20px;
   font-weight: 600;
   list-style-type: square;
+}
+
+/* Responsive style__ */
+
+@media screen and (max-width: 1536px) {
+  
+}
+
+
+@media screen and (max-width: 1280px) {
+  
+}
+
+
+@media screen and (max-width: 1024px) {
+  
+}
+@media screen and (max-width: 768px) {
+  
+}
+@media screen and (max-width: 620px) {
+  
+}
+@media screen and (max-width: 475px) {
+  
 }
