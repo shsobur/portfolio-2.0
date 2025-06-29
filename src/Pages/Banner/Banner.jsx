@@ -48,7 +48,7 @@ const Banner = () => {
               <CircularText
                 text="*NO VIBES HEAR*JUST REAL CODE"
                 onHover="pause"
-                spinDuration={20}
+                spinDuration={40}
                 className="custom-class"
               ></CircularText>
             </div>

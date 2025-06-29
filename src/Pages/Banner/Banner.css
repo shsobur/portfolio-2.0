@@ -55,7 +55,6 @@
   --letter-spacing: calc(1em / 8);
 }
 
-
 .absolute_content_two h1 {
   background-clip: text;
   color: var(--color-background);
@@ -63,7 +62,13 @@
   letter-spacing: var(--letter-spacing);
   -webkit-text-stroke-color: transparent;
   -webkit-text-stroke-width: var(--stroke-width);
-  background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
+  background-image: linear-gradient(
+    to right,
+    #09f1b8,
+    #00a2ff,
+    #ff00d2,
+    #fed90f
+  );
 }
 
 /* Absolute content - 03 */
@@ -81,6 +86,8 @@
 /* Absolute content - 04 */
 
 .absolute_content_four {
+  width: 200px;
+  height: 200px;
   position: absolute;
   top: 5%;
   right: 2%;
@@ -116,24 +123,58 @@
 /* Responsive style__ */
 
 @media screen and (max-width: 1536px) {
-  
-}
+  /* Absolute content - 01 */
 
+  .absolute_content_one {
+    top: 2%;
+    left: 2%;
+    font-size: 5rem;
+  }
+
+  /* Absolute content - 02 */
+
+  .absolute_content_two {
+    right: 2%;
+    bottom: 2%;
+    font-size: 5rem;
+  }
+
+  /* Absolute content - 04 */
+
+  .absolute_content_four {
+    top: 2%;
+    right: 2%;
+    width: 185px;
+    height: 185px;
+  }
+
+  /* Absolute content - 05 */
+
+  .absolute_content_five {
+    left: 4%;
+    bottom: 2%;
+  }
+}
 
 @media screen and (max-width: 1280px) {
-  
-}
+  /* Absolute content - 01 */
 
+  .absolute_content_one {
+    font-size: 4.5rem;
+  }
 
-@media screen and (max-width: 1024px) {
-  
-}
-@media screen and (max-width: 768px) {
-  
-}
-@media screen and (max-width: 620px) {
-  
-}
-@media screen and (max-width: 475px) {
-  
+  /* Absolute content - 02 */
+
+  .absolute_content_two {
+    font-size: 4.5rem;
+  }
+
+  /* Absolute content - 03 */
+
+  .absolute_content_three {
+    height: 450px;
+    width: 450px;
+    top: calc(50% - 225px);
+    right: calc(50% - 225px);
+  }
 }
