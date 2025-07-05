@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import "./About.css"; // Import the CSS file
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -285,298 +286,54 @@ const About = () => {
     return () => ctx.revert();
   }, []);
 
-  const styles = {
-    section: {
-      minHeight: "100vh",
-      background:
-        "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)",
-      padding: "100px 20px",
-      position: "relative",
-      overflow: "hidden",
-      color: "#ffffff",
-    },
-    floatingBackground: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      pointerEvents: "none",
-      zIndex: 1,
-    },
-    floatingElement: {
-      position: "absolute",
-      background: "linear-gradient(45deg, #06b6d4, #8b5cf6)",
-      filter: "blur(1px)",
-    },
-    container: {
-      maxWidth: "1400px",
-      margin: "0 auto",
-      position: "relative",
-      zIndex: 10,
-    },
-    title: {
-      fontSize: "4.5rem",
-      fontWeight: "bold",
-      textAlign: "center",
-      marginBottom: "80px",
-      background: "linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      backgroundClip: "text",
-    },
-    mainContent: {
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-      gap: "80px",
-      marginBottom: "100px",
-      alignItems: "center",
-    },
-    imageSection: {
-      position: "relative",
-      display: "flex",
-      justifyContent: "center",
-    },
-    imageContainer: {
-      position: "relative",
-      width: "350px",
-      height: "450px",
-      borderRadius: "20px",
-      overflow: "hidden",
-      background:
-        "linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2))",
-      border: "2px solid rgba(255, 255, 255, 0.1)",
-      backdropFilter: "blur(10px)",
-    },
-    profileImage: {
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: "18px",
-    },
-    textSection: {
-      padding: "20px 0",
-    },
-    name: {
-      fontSize: "2.5rem",
-      fontWeight: "bold",
-      marginBottom: "10px",
-      color: "#ffffff",
-    },
-    role: {
-      fontSize: "1.5rem",
-      color: "#06b6d4",
-      marginBottom: "30px",
-      fontWeight: "500",
-    },
-    paragraph: {
-      fontSize: "1.125rem",
-      lineHeight: "1.8",
-      color: "#d1d5db",
-      marginBottom: "25px",
-      textAlign: "justify",
-    },
-    statsContainer: {
-      display: "grid",
-      gridTemplateColumns: "repeat(4, 1fr)",
-      gap: "40px",
-      marginBottom: "100px",
-      padding: "60px 0",
-    },
-    statCard: {
-      textAlign: "center",
-      background: "rgba(255, 255, 255, 0.05)",
-      backdropFilter: "blur(10px)",
-      borderRadius: "16px",
-      padding: "30px 20px",
-      border: "1px solid rgba(255, 255, 255, 0.1)",
-      transition: "all 0.3s ease",
-    },
-    statNumber: {
-      fontSize: "3rem",
-      fontWeight: "bold",
-      background: "linear-gradient(135deg, #06b6d4, #8b5cf6)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      backgroundClip: "text",
-      marginBottom: "10px",
-    },
-    statLabel: {
-      fontSize: "1rem",
-      color: "#9ca3af",
-      fontWeight: "500",
-    },
-    timelineSection: {
-      position: "relative",
-    },
-    timelineTitle: {
-      fontSize: "3rem",
-      fontWeight: "bold",
-      textAlign: "center",
-      marginBottom: "60px",
-      color: "#ffffff",
-    },
-    timelineContainer: {
-      position: "relative",
-      maxWidth: "800px",
-      margin: "0 auto",
-    },
-    timelineLine: {
-      position: "absolute",
-      left: "30px",
-      top: 0,
-      bottom: 0,
-      width: "3px",
-      background: "linear-gradient(180deg, #06b6d4, #8b5cf6)",
-      borderRadius: "2px",
-      transformOrigin: "top",
-    },
-    timelineItem: {
-      position: "relative",
-      paddingLeft: "80px",
-      marginBottom: "50px",
-    },
-    timelineDot: {
-      position: "absolute",
-      left: "18px",
-      top: "10px",
-      width: "24px",
-      height: "24px",
-      background: "linear-gradient(135deg, #06b6d4, #8b5cf6)",
-      borderRadius: "50%",
-      border: "4px solid #0a0a0a",
-    },
-    timelineContent: {
-      background: "rgba(255, 255, 255, 0.05)",
-      backdropFilter: "blur(10px)",
-      borderRadius: "16px",
-      padding: "25px",
-      border: "1px solid rgba(255, 255, 255, 0.1)",
-    },
-    timelineYear: {
-      fontSize: "1rem",
-      color: "#06b6d4",
-      fontWeight: "600",
-      marginBottom: "5px",
-    },
-    timelineJobTitle: {
-      fontSize: "1.5rem",
-      fontWeight: "bold",
-      color: "#ffffff",
-      marginBottom: "5px",
-    },
-    timelineCompany: {
-      fontSize: "1.125rem",
-      color: "#8b5cf6",
-      fontWeight: "500",
-      marginBottom: "15px",
-    },
-    timelineDescription: {
-      fontSize: "1rem",
-      color: "#d1d5db",
-      lineHeight: "1.6",
-    },
-  };
-
-  // Add responsive styles
-  const addResponsiveStyles = () => {
-    const style = document.createElement("style");
-    style.textContent = `
-      @media (max-width: 768px) {
-        .about-main-content {
-          grid-template-columns: 1fr !important;
-          gap: 40px !important;
-          text-align: center;
-        }
-        .about-stats {
-          grid-template-columns: repeat(2, 1fr) !important;
-          gap: 20px !important;
-        }
-        .about-title {
-          font-size: 3rem !important;
-        }
-        .about-image-container {
-          width: 280px !important;
-          height: 350px !important;
-        }
-      }
-      .stat-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(6, 182, 212, 0.5);
-        box-shadow: 0 10px 30px rgba(6, 182, 212, 0.2);
-      }
-    `;
-    document.head.appendChild(style);
-  };
-
-  useEffect(() => {
-    addResponsiveStyles();
-  }, []);
-
   return (
-    <section ref={sectionRef} style={styles.section}>
+    <section ref={sectionRef} className="about-section">
       {/* Floating geometric background */}
-      <div style={styles.floatingBackground}>
+      <div className="floating-background">
         {floatingElements.map((element) => (
           <div
             key={element.id}
             ref={(el) => (floatingElementsRef.current[element.id] = el)}
+            className={`floating-element ${
+              element.shape === "circle" ? "circle" : "square"
+            }`}
             style={{
-              ...styles.floatingElement,
               left: `${element.left}%`,
               top: `${element.top}%`,
               width: `${element.size}px`,
               height: `${element.size}px`,
-              borderRadius: element.shape === "circle" ? "50%" : "10px",
               opacity: element.opacity,
             }}
           />
         ))}
       </div>
 
-      <div style={styles.container}>
+      <div className="about-container">
         {/* Title */}
-        <h2 ref={titleRef} style={styles.title} className="about-title">
+        <h2 ref={titleRef} className="about-title">
           {aboutData.title}
         </h2>
 
         {/* Main Content */}
-        <div style={styles.mainContent} className="about-main-content">
+        <div className="about-main-content">
           {/* Image Section */}
-          <div style={styles.imageSection}>
-            <div
-              ref={imageRef}
-              style={styles.imageContainer}
-              className="about-image-container"
-            >
+          <div className="about-image-section">
+            <div ref={imageRef} className="about-image-container">
               {/* Placeholder image - replace with actual image */}
-              <div
-                style={{
-                  ...styles.profileImage,
-                  background:
-                    "linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "4rem",
-                  color: "white",
-                }}
-              >
-                👨‍💻
-              </div>
+              <div className="profile-image-placeholder">👨‍💻</div>
             </div>
           </div>
 
           {/* Text Section */}
-          <div style={styles.textSection}>
-            <h3 style={styles.name}>{aboutData.name}</h3>
-            <p style={styles.role}>{aboutData.role}</p>
+          <div className="about-text-section">
+            <h3 className="about-name">{aboutData.name}</h3>
+            <p className="about-role">{aboutData.role}</p>
 
             {aboutData.description.map((paragraph, index) => (
               <p
                 key={index}
                 ref={(el) => (textRefs.current[index] = el)}
-                style={styles.paragraph}
+                className="about-paragraph"
               >
                 {paragraph}
               </p>
@@ -585,39 +342,32 @@ const About = () => {
         </div>
 
         {/* Stats */}
-        <div style={styles.statsContainer} className="about-stats">
+        <div className="about-stats-container">
           {aboutData.stats.map((stat, index) => (
             <div
               key={index}
               ref={(el) => (statsRefs.current[index] = el)}
-              style={styles.statCard}
               className="stat-card"
             >
-              <div style={styles.statNumber} className="stat-number">
-                {stat.number}
-              </div>
-              <div style={styles.statLabel}>{stat.label}</div>
+              <div className="stat-number">{stat.number}</div>
+              <div className="stat-label">{stat.label}</div>
             </div>
           ))}
         </div>
 
         {/* Timeline */}
-        <div style={styles.timelineSection}>
-          <h3 style={styles.timelineTitle}>My Journey</h3>
-          <div ref={timelineRef} style={styles.timelineContainer}>
-            <div style={styles.timelineLine} className="timeline-line"></div>
+        <div className="about-timeline-section">
+          <h3 className="timeline-title">My Journey</h3>
+          <div ref={timelineRef} className="timeline-container">
+            <div className="timeline-line"></div>
             {aboutData.timeline.map((item, index) => (
-              <div
-                key={index}
-                style={styles.timelineItem}
-                className="timeline-item"
-              >
-                <div style={styles.timelineDot}></div>
-                <div style={styles.timelineContent}>
-                  <div style={styles.timelineYear}>{item.year}</div>
-                  <h4 style={styles.timelineJobTitle}>{item.title}</h4>
-                  <div style={styles.timelineCompany}>{item.company}</div>
-                  <p style={styles.timelineDescription}>{item.description}</p>
+              <div key={index} className="timeline-item">
+                <div className="timeline-dot"></div>
+                <div className="timeline-content">
+                  <div className="timeline-year">{item.year}</div>
+                  <h4 className="timeline-job-title">{item.title}</h4>
+                  <div className="timeline-company">{item.company}</div>
+                  <p className="timeline-description">{item.description}</p>
                 </div>
               </div>
             ))}
