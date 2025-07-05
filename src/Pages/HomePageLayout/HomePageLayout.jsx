@@ -3,7 +3,6 @@ import "./HomePageLayout.css";
 import Hero from "../Hero/Hero";
 import About from "../About/About";
 
-
 // Package(Lenis)__
 import { gsap } from "gsap";
 gsap.registerPlugin(ScrollTrigger);
@@ -13,10 +12,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // From react_
 import React, { useEffect } from "react";
 import Contact from "../Contact/Contact";
+import Skill from "../Skill/Skill";
 
 const HomePageLayout = () => {
   // Register GSAP plugins__
-  
+
   useEffect(() => {
     // Initialize Lenis for smooth scrolling__
 
@@ -53,6 +53,7 @@ const HomePageLayout = () => {
       <section id="main_page_container">
         <Hero></Hero>
         <About></About>
+        <Skill></Skill>
         <Contact></Contact>
       </section>
     </>
