@@ -17,40 +17,31 @@ const Skill = () => {
     {
       category: "Frontend",
       skills: [
-        "React",
-        "TypeScript",
-        "Next.js",
-        "Tailwind CSS",
-        "JavaScript",
         "HTML5",
         "CSS3",
-        "Vue.js",
+        "Tailwind CSS",
+        "JavaScript",
+        "React",
+        "Axios",
+        "TenStackQuery",
       ],
     },
     {
       category: "Backend",
-      skills: [
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "PostgreSQL",
-        "Python",
-        "Django",
-        "REST APIs",
-        "GraphQL",
-      ],
+      skills: ["Node.js", "Express.js", "MongoDB"],
     },
     {
       category: "Tools & Others",
       skills: [
-        "Git",
-        "Docker",
-        "AWS",
+        "Git & GitHub",
         "Firebase",
-        "Webpack",
+        "JWT",
         "Figma",
+        "Netlify",
+        "Vercel",
+        "Npm",
         "VS Code",
-        "Linux",
+        "Chrome DevTools",
       ],
     },
   ];
@@ -64,8 +55,8 @@ const Skill = () => {
         left: Math.random() * 100,
         top: Math.random() * 100,
         size: Math.random() * 60 + 20,
-        shape: Math.random() > 0.5 ? 'circle' : 'square',
-        opacity: Math.random() * 0.1 + 0.05
+        shape: Math.random() > 0.5 ? "circle" : "square",
+        opacity: Math.random() * 0.1 + 0.05,
       });
     }
     return elements;
@@ -86,7 +77,7 @@ const Skill = () => {
             repeat: -1,
             yoyo: true,
             ease: "power1.inOut",
-            delay: index * 0.2
+            delay: index * 0.2,
           });
         }
       });
@@ -363,7 +354,7 @@ const Skill = () => {
               top: `${element.top}%`,
               width: `${element.size}px`,
               height: `${element.size}px`,
-              borderRadius: element.shape === 'circle' ? '50%' : '10px',
+              borderRadius: element.shape === "circle" ? "50%" : "10px",
               opacity: element.opacity,
             }}
           />
