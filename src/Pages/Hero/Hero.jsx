@@ -39,7 +39,7 @@ function Stars(props) {
           transparent
           color="#667eea"
           size={0.002}
-          sizeAttenuation={true}
+          sizeAttenuation
           depthWrite={false}
         />
       </Points>
@@ -47,7 +47,7 @@ function Stars(props) {
   );
 }
 
-// Floating 3D shape__
+// Floating 3D shape
 function FloatingShape() {
   const meshRef = useRef();
 
@@ -107,7 +107,7 @@ const Hero = () => {
         "-=0.4"
       );
 
-    // Background scroll parallax
+    // Background parallax scroll
     gsap.to(".hero-bg", {
       yPercent: -50,
       ease: "none",
@@ -138,10 +138,9 @@ const Hero = () => {
 
   return (
     <section ref={heroRef} className="hero-section">
-
       <div className="hero-bg">
         <Canvas camera={{ position: [0, 0, 1] }}>
-          <Suspense fallback={<span>Loading 3D...</span>}>
+          <Suspense fallback={null}>
             <Stars />
             <FloatingShape />
             <ambientLight intensity={0.5} />
@@ -152,19 +151,14 @@ const Hero = () => {
 
       <div className="hero-content">
         <div className="container">
-
           <h1 ref={titleRef} className="hero-title">
             <span className="gradient-text">MERN_STACK</span>
-            <br />
-            Developer
+            <span className="block-text">Developer_</span>
           </h1>
 
           <p ref={subtitleRef} className="hero-subtitle">
             Learning by building real projects. I enjoy making websites that
             look good and work well.
-            <br />
-            Passionate about creating interactive and performant web
-            applications.
           </p>
 
           <div ref={ctaRef} className="hero-cta">
@@ -175,7 +169,6 @@ const Hero = () => {
               Download CV
             </a>
           </div>
-
         </div>
       </div>
 
@@ -191,7 +184,6 @@ const Hero = () => {
         </div>
         <p>Scroll to explore</p>
       </div>
-      
     </section>
   );
 };
