@@ -18,47 +18,40 @@ const About = () => {
   // About data
   const aboutData = {
     title: "About Me",
-    name: "John Doe",
-    role: "Full Stack Developer & Designer",
+    name: "Sobur Hossen",
+    role: "MERN Stack Developer",
     description: [
-      "I'm a passionate full-stack developer with over 5 years of experience creating digital experiences that matter. I specialize in modern web technologies and love turning complex problems into simple, beautiful solutions.",
-      "When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers. I believe in writing clean, efficient code and creating user experiences that delight.",
-      "My journey in tech started with curiosity and has evolved into a career driven by continuous learning and innovation. I'm always excited to take on new challenges and collaborate with teams to build something amazing.",
+      "I’m a passionate front-end developer with solid skills in HTML5, CSS3, JavaScript, and React.js. I specialize in building responsive and user-friendly interfaces that provide seamless user experiences.",
+      "In addition to my front-end expertise, I have foundational knowledge of Express.js, Node.js, and MongoDB, and I’m actively expanding my backend development skills to become a well-rounded MERN Stack developer.",
+      "I am highly motivated to learn, embrace new challenges, and collaborate effectively to develop clean, functional, and modern web applications.",
     ],
     stats: [
-      { number: "50+", label: "Projects Completed" },
-      { number: "5+", label: "Years Experience" },
-      { number: "20+", label: "Happy Clients" },
+      { number: "25+", label: "Projects Completed" },
+      { number: "1+", label: "Years Experience" },
+      { number: "5+", label: "Happy Clients" },
       { number: "15+", label: "Technologies" },
     ],
     timeline: [
       {
-        year: "2024",
-        title: "Senior Full Stack Developer",
-        company: "Tech Solutions Inc.",
-        description:
-          "Leading development of enterprise applications using React, Node.js, and cloud technologies.",
-      },
-      {
-        year: "2022",
-        title: "Full Stack Developer",
-        company: "Digital Agency Co.",
-        description:
-          "Developed responsive web applications and collaborated with design teams to create seamless user experiences.",
-      },
-      {
-        year: "2020",
-        title: "Frontend Developer",
-        company: "Startup Ventures",
-        description:
-          "Built modern, responsive interfaces using React and modern CSS frameworks.",
-      },
-      {
-        year: "2019",
+        year: "🧭 Jan 2024",
         title: "Started My Journey",
-        company: "Self-taught",
+        company: "Self-taught Developer",
         description:
-          "Began learning web development and fell in love with creating digital experiences.",
+          "Began learning web development with a focus on HTML, CSS, and JavaScript. Practiced regularly and built small UI components to improve problem-solving and layout understanding.",
+      },
+      {
+        year: "🧱 Jun 2024",
+        title: "Freelance & Personal Projects",
+        company: "Freelance & Personal Projects",
+        description:
+          "Built MERN stack projects like Inspot, Reside Nest, and WordCraft Worked with React, Tailwind CSS, Firebase, Node.js, and MongoDB.",
+      },
+      {
+        year: "🚀 2025",
+        title: "Frontend Developer (MERN)",
+        company: "Open to Work",
+        description:
+          "Focused on writing clean, reusable React components and improving UI/UX.   Exploring tools like GSAP and Three.js to create interactive, animated sections. Refactored code to separate styles, improve structure, and deliver a polished, professional portfolio.",
       },
     ],
   };
