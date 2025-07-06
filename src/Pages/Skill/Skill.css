@@ -1,65 +1,78 @@
-.skill-section {
+/* Base Styles */
+.skills-section {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a, #1e293b, #000);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #000000 100%);
   padding: 80px 20px;
   position: relative;
   overflow: hidden;
-  font-family: Inter, sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-.star-bg {
+.floating-background {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+  z-index: 1;
 }
 
-.star {
+.floating-element {
   position: absolute;
-  background: linear-gradient(45deg, #06b6d4, #8b5cf6, #ec4899);
-  border-radius: 50%;
-  opacity: 0.3;
+  background: linear-gradient(45deg, #06b6d4, #8b5cf6);
   filter: blur(1px);
 }
 
-.skill-container {
-  max-width: 1200px;
-  margin: auto;
-  position: relative;
-  z-index: 2;
+.floating-element.circle {
+  border-radius: 50%;
 }
 
-.skill-header {
+.floating-element.square {
+  border-radius: 10px;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* Header */
+.skills-header {
   text-align: center;
   margin-bottom: 80px;
 }
 
-.skill-title {
+.skills-title {
   font-size: 4rem;
   font-weight: bold;
   background: linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
   margin-bottom: 24px;
+  line-height: 1.2;
 }
 
-.skill-subtitle {
+.skills-subtitle {
   font-size: 1.25rem;
   color: #d1d5db;
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto;
   line-height: 1.6;
 }
 
-.skill-grid {
+/* Skills Grid */
+.skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 40px;
   margin-bottom: 80px;
 }
 
-.category-box {
+.skills-category {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border-radius: 16px;
@@ -70,10 +83,10 @@
 .category-title {
   font-size: 1.875rem;
   font-weight: bold;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: 24px;
-  padding-bottom: 12px;
   position: relative;
+  padding-bottom: 12px;
 }
 
 .category-underline {
@@ -86,7 +99,7 @@
   border-radius: 2px;
 }
 
-.skill-list {
+.skills-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -105,16 +118,7 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.skill-text {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #fff;
-  position: relative;
-  z-index: 2;
-  transition: color 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-card:hover {
@@ -127,7 +131,16 @@
   color: #06b6d4;
 }
 
-.cta {
+.skill-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+}
+
+/* Call to Action */
+.skills-cta {
   text-align: center;
   margin-top: 80px;
 }
@@ -140,13 +153,15 @@
 
 .cta-button {
   background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-  color: #fff;
+  color: #ffffff;
   border: none;
-  border-radius: 999px;
+  border-radius: 50px;
   padding: 16px 32px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
   transition: all 0.3s ease;
 }
 
