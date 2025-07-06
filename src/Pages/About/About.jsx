@@ -1,12 +1,19 @@
-import React, { useEffect, useRef } from "react";
+// File path__
+import image from "../../assets/image.png";
+import "./About.css";
+
+// Packge(GSAP)__
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./About.css"; // Import the CSS file
+
+// From react__
+import React, { useEffect, useRef } from "react";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  // Refs for GSAP animations
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const imageRef = useRef(null);
@@ -15,15 +22,15 @@ const About = () => {
   const timelineRef = useRef(null);
   const floatingElementsRef = useRef([]);
 
-  // About data
+  // Static content data
   const aboutData = {
     title: "About Me",
     name: "Sobur Hossen",
     role: "MERN Stack Developer",
     description: [
-      "I’m a passionate front-end developer with solid skills in HTML5, CSS3, JavaScript, and React.js. I specialize in building responsive and user-friendly interfaces that provide seamless user experiences.",
+      "I'm a passionate front-end developer with solid skills in HTML5, CSS3, JavaScript, and React.js.",
       "In addition to my front-end expertise, I have foundational knowledge of Express.js, Node.js, and MongoDB, and I’m actively expanding my backend development skills to become a well-rounded MERN Stack developer.",
-      "I am highly motivated to learn, embrace new challenges, and collaborate effectively to develop clean, functional, and modern web applications.",
+      "I am highly motivated to learn and embrace new challenges.",
     ],
     stats: [
       { number: "25+", label: "Projects Completed" },
@@ -36,50 +43,46 @@ const About = () => {
         year: "🧭 Jan 2024",
         title: "Started My Journey",
         company: "Self-taught Developer",
-        description:
-          "Began learning web development with a focus on HTML, CSS, and JavaScript. Practiced regularly and built small UI components to improve problem-solving and layout understanding.",
+        description: "Began learning web development fundamentals.",
       },
       {
         year: "🧱 Jun 2024",
         title: "Freelance & Personal Projects",
         company: "Freelance & Personal Projects",
-        description:
-          "Built MERN stack projects like Inspot, Reside Nest, and WordCraft Worked with React, Tailwind CSS, Firebase, Node.js, and MongoDB.",
+        description: "Built MERN stack projects.",
       },
       {
         year: "🚀 2025",
         title: "Frontend Developer (MERN)",
         company: "Open to Work",
-        description:
-          "Focused on writing clean, reusable React components and improving UI/UX.   Exploring tools like GSAP and Three.js to create interactive, animated sections. Refactored code to separate styles, improve structure, and deliver a polished, professional portfolio.",
+        description: "Focused on writing clean, reusable React components.",
       },
     ],
   };
 
-  // Generate floating geometric shapes
+  /**
+   * Generates floating background elements with random positions and properties
+   */
   const generateFloatingElements = () => {
-    const elements = [];
-    for (let i = 0; i < 15; i++) {
-      elements.push({
-        id: i,
-        left: Math.random() * 100,
-        top: Math.random() * 100,
-        size: Math.random() * 60 + 20,
-        shape: Math.random() > 0.5 ? "circle" : "square",
-        opacity: Math.random() * 0.1 + 0.05,
-      });
-    }
-    return elements;
+    return Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      size: Math.random() * 60 + 20,
+      shape: Math.random() > 0.5 ? "circle" : "square",
+      opacity: Math.random() * 0.1 + 0.05,
+    }));
   };
 
   const floatingElements = generateFloatingElements();
 
+  // GSAP animations setup
   useEffect(() => {
     const ctx = gsap.context(() => {
       // Floating elements animation
-      floatingElementsRef.current.forEach((element, index) => {
-        if (element) {
-          gsap.to(element, {
+      floatingElementsRef.current.forEach((el, i) => {
+        if (el) {
+          gsap.to(el, {
             y: "random(-50, 50)",
             x: "random(-30, 30)",
             rotation: "random(-180, 180)",
@@ -87,7 +90,7 @@ const About = () => {
             repeat: -1,
             yoyo: true,
             ease: "power1.inOut",
-            delay: index * 0.2,
+            delay: i * 0.2,
           });
         }
       });
@@ -95,11 +98,7 @@ const About = () => {
       // Title animation
       gsap.fromTo(
         titleRef.current,
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.8,
-        },
+        { opacity: 0, y: 100, scale: 0.8 },
         {
           opacity: 1,
           y: 0,
@@ -115,14 +114,10 @@ const About = () => {
         }
       );
 
-      // Image animation with 3D effect
+      // Image animation
       gsap.fromTo(
         imageRef.current,
-        {
-          opacity: 0,
-          rotationY: -90,
-          scale: 0.8,
-        },
+        { opacity: 0, rotationY: -90, scale: 0.8 },
         {
           opacity: 1,
           rotationY: 0,
@@ -139,23 +134,19 @@ const About = () => {
         }
       );
 
-      // Text paragraphs staggered animation
-      textRefs.current.forEach((text, index) => {
+      // Text paragraphs animation
+      textRefs.current.forEach((text, i) => {
         if (text) {
           gsap.fromTo(
             text,
-            {
-              opacity: 0,
-              x: 50,
-              y: 30,
-            },
+            { opacity: 0, x: 50, y: 30 },
             {
               opacity: 1,
               x: 0,
               y: 0,
               duration: 1,
               ease: "power2.out",
-              delay: 0.6 + index * 0.2,
+              delay: 0.6 + i * 0.2,
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top 60%",
@@ -167,23 +158,19 @@ const About = () => {
         }
       });
 
-      // Stats animation with counter effect
-      statsRefs.current.forEach((stat, index) => {
+      // Stats animation
+      statsRefs.current.forEach((stat, i) => {
         if (stat) {
           gsap.fromTo(
             stat,
-            {
-              opacity: 0,
-              y: 50,
-              scale: 0.5,
-            },
+            { opacity: 0, y: 50, scale: 0.5 },
             {
               opacity: 1,
               y: 0,
               scale: 1,
               duration: 0.8,
               ease: "back.out(1.7)",
-              delay: 1 + index * 0.15,
+              delay: 1 + i * 0.15,
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top 50%",
@@ -193,22 +180,20 @@ const About = () => {
             }
           );
 
-          // Counter animation for numbers
-          const numberElement = stat.querySelector(".stat-number");
-          if (numberElement) {
-            const endValue = parseInt(
-              numberElement.textContent.replace(/\D/g, "")
-            );
+          // Number counter animation
+          const numberEl = stat.querySelector(".stat-number");
+          if (numberEl) {
+            const endValue = parseInt(numberEl.textContent.replace(/\D/g, ""));
             gsap.fromTo(
               { count: 0 },
               { count: endValue },
               {
                 duration: 2,
-                delay: 1.2 + index * 0.15,
+                delay: 1.2 + i * 0.15,
                 ease: "power2.out",
                 onUpdate: function () {
-                  const suffix = numberElement.textContent.replace(/\d/g, "");
-                  numberElement.textContent =
+                  const suffix = numberEl.textContent.replace(/\d/g, "");
+                  numberEl.textContent =
                     Math.round(this.targets()[0].count) + suffix;
                 },
                 scrollTrigger: {
@@ -225,16 +210,12 @@ const About = () => {
 
       // Timeline animation
       if (timelineRef.current) {
-        const timelineItems =
-          timelineRef.current.querySelectorAll(".timeline-item");
+        const items = timelineRef.current.querySelectorAll(".timeline-item");
+        const line = timelineRef.current.querySelector(".timeline-line");
 
         gsap.fromTo(
-          timelineItems,
-          {
-            opacity: 0,
-            x: -100,
-            scale: 0.8,
-          },
+          items,
+          { opacity: 0, x: -100, scale: 0.8 },
           {
             opacity: 1,
             x: 0,
@@ -252,12 +233,9 @@ const About = () => {
           }
         );
 
-        // Timeline line animation
-        const timelineLine =
-          timelineRef.current.querySelector(".timeline-line");
-        if (timelineLine) {
+        if (line) {
           gsap.fromTo(
-            timelineLine,
+            line,
             { scaleY: 0 },
             {
               scaleY: 1,
@@ -281,65 +259,59 @@ const About = () => {
 
   return (
     <section ref={sectionRef} className="about-section">
-      {/* Floating geometric background */}
+      {/* Floating background elements */}
       <div className="floating-background">
-        {floatingElements.map((element) => (
+        {floatingElements.map((el) => (
           <div
-            key={element.id}
-            ref={(el) => (floatingElementsRef.current[element.id] = el)}
-            className={`floating-element ${
-              element.shape === "circle" ? "circle" : "square"
-            }`}
+            key={el.id}
+            ref={(e) => (floatingElementsRef.current[el.id] = e)}
+            className={`floating-element ${el.shape}`}
             style={{
-              left: `${element.left}%`,
-              top: `${element.top}%`,
-              width: `${element.size}px`,
-              height: `${element.size}px`,
-              opacity: element.opacity,
+              left: `${el.left}%`,
+              top: `${el.top}%`,
+              width: `${el.size}px`,
+              height: `${el.size}px`,
+              opacity: el.opacity,
             }}
           />
         ))}
       </div>
 
       <div className="about-container">
-        {/* Title */}
         <h2 ref={titleRef} className="about-title">
           {aboutData.title}
         </h2>
 
-        {/* Main Content */}
         <div className="about-main-content">
-          {/* Image Section */}
           <div className="about-image-section">
             <div ref={imageRef} className="about-image-container">
-              {/* Placeholder image - replace with actual image */}
-              <div className="profile-image-placeholder">👨‍💻</div>
+              <div className="profile-image-placeholder">
+                <img src={image} alt={aboutData.name} />
+              </div>
             </div>
           </div>
 
-          {/* Text Section */}
           <div className="about-text-section">
             <h3 className="about-name">{aboutData.name}</h3>
             <p className="about-role">{aboutData.role}</p>
 
-            {aboutData.description.map((paragraph, index) => (
+            {aboutData.description.map((para, i) => (
               <p
-                key={index}
-                ref={(el) => (textRefs.current[index] = el)}
+                key={i}
+                ref={(e) => (textRefs.current[i] = e)}
                 className="about-paragraph"
               >
-                {paragraph}
+                {para}
               </p>
             ))}
           </div>
         </div>
 
-        {/* Stats */}
         <div className="about-stats-container">
-          {aboutData.stats.map((stat, index) => (
+          {aboutData.stats.map((stat, i) => (
             <div
-              key={index}
-              ref={(el) => (statsRefs.current[index] = el)}
+              key={i}
+              ref={(e) => (statsRefs.current[i] = e)}
               className="stat-card"
             >
               <div className="stat-number">{stat.number}</div>
@@ -348,13 +320,12 @@ const About = () => {
           ))}
         </div>
 
-        {/* Timeline */}
         <div className="about-timeline-section">
           <h3 className="timeline-title">My Journey</h3>
           <div ref={timelineRef} className="timeline-container">
             <div className="timeline-line"></div>
-            {aboutData.timeline.map((item, index) => (
-              <div key={index} className="timeline-item">
+            {aboutData.timeline.map((item, i) => (
+              <div key={i} className="timeline-item">
                 <div className="timeline-dot"></div>
                 <div className="timeline-content">
                   <div className="timeline-year">{item.year}</div>
