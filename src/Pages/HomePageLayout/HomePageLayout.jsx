@@ -14,6 +14,7 @@ import React, { useEffect } from "react";
 import Contact from "../Contact/Contact";
 import Skill from "../Skill/Skill";
 import Projects from "../Projects/Projects";
+import Message from "../../Components/Message/Message";
 
 const HomePageLayout = () => {
   // Register GSAP plugins__
@@ -53,9 +54,13 @@ const HomePageLayout = () => {
     <>
       <section id="main_page_container">
         <Hero></Hero>
+        <Message message={"Curious who I am? Let's scroll down_"}></Message>
         <About></About>
+        <Message message={"Here are the tools I work with_"}></Message>
         <Skill></Skill>
+        <Message message={"Let me show you what I’ve built_"}></Message>
         <Projects></Projects>
+        <Message message={"Like my work? Let’s connect_"}></Message>
         <Contact></Contact>
       </section>
     </>
