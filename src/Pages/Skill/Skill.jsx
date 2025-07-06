@@ -253,7 +253,6 @@ const Skill = () => {
         {/* Call to Action */}
         <div className="skills-cta">
           <p className="cta-text">Ready to build something amazing together?</p>
-          <button className="cta-button">Let's Connect</button>
         </div>
       </div>
     </section>

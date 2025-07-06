@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect } from "react";
 import Contact from "../Contact/Contact";
 import Skill from "../Skill/Skill";
+import Projects from "../Projects/Projects";
 
 const HomePageLayout = () => {
   // Register GSAP plugins__
@@ -54,6 +55,7 @@ const HomePageLayout = () => {
         <Hero></Hero>
         <About></About>
         <Skill></Skill>
+        <Projects></Projects>
         <Contact></Contact>
       </section>
     </>
