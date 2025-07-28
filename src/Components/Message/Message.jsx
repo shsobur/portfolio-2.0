@@ -1,12 +1,17 @@
+// File path__
 import "./Message.css";
-import { useEffect, useRef } from "react";
+
+// Package(GSAP)__
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// From react__
+import { useEffect, useRef } from "react";
 
 // Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
-const Message = ({message}) => {
+const Message = ({ message }) => {
   // Refs for DOM elements
   const containerRef = useRef(null);
   const textRef = useRef(null);

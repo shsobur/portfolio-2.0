@@ -24,43 +24,38 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
   padding: 0 2rem;
-}
-
-/* ===== Container (used in JSX) ===== */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 /* ===== Title ===== */
 .hero-title {
-  font-size: clamp(3rem, 8vw, 8rem);
+  width: 100%;
+  font-size: 8rem;
+  text-align: center;
   font-weight: 700;
-  line-height: 1.1;
-  margin-bottom: 2rem;
   color: #ffffff;
+  line-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 /* ===== Gradient Text Effect ===== */
-.hero-title .gradient-text {
-  display: inline-block;
+.gradient-text {
+  /* display: inline-block; */
   background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradient-shift 4s ease-in-out infinite;
+  animation: gradient-shift 5s ease-in-out infinite;
 }
 
 /* ===== Second Line of Title ===== */
-.hero-title .block-text {
-  display: block;
+.block-text {
+  /* display: block; */
   color: #ffffff;
   margin-top: 0.3rem;
 }
