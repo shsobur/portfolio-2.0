@@ -58,7 +58,7 @@ const HomePageLayout = () => {
         <Skill></Skill>
         <Message message={"Let me show you what I’ve built_"}></Message>
         <Projects></Projects>
-        <Message message={"Like my work? Let’s connect_"}></Message>
+        <Message message={"Like my work? Let’s contact_"}></Message>
         <Contact></Contact>
       </section>
     </>

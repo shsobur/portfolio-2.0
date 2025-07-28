@@ -1,19 +1,12 @@
-// File path__
 import image from "../../assets/image.png";
 import "./About.css";
-
-// Packge(GSAP)__
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef, useMemo, useCallback } from "react";
 
-// From react__
-import React, { useEffect, useRef } from "react";
-
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
-  // Refs for GSAP animations
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const imageRef = useRef(null);
@@ -22,75 +15,81 @@ const About = () => {
   const timelineRef = useRef(null);
   const floatingElementsRef = useRef([]);
 
-  // Static content data
-  const aboutData = {
-    title: "About Me",
-    name: "Sobur Hossen",
-    role: "MERN Stack Developer",
-    description: [
-      "I'm a passionate front-end developer with solid skills in HTML5, CSS3, JavaScript, and React.js.",
-      "In addition to my front-end expertise, I have foundational knowledge of Express.js, Node.js, and MongoDB, and I’m actively expanding my backend development skills to become a well-rounded MERN Stack developer.",
-      "I am highly motivated to learn and embrace new challenges.",
-    ],
-    stats: [
-      { number: "25+", label: "Projects Completed" },
-      { number: "1+", label: "Years Experience" },
-      { number: "5+", label: "Happy Clients" },
-      { number: "19+", label: "Technologies" },
-    ],
-    timeline: [
-      {
-        year: "🧭 Jan 2024",
-        title: "Started My Journey",
-        company: "Self-taught Developer",
-        description: "Began learning web development fundamentals.",
-      },
-      {
-        year: "🧱 Jun 2024",
-        title: "Freelance & Personal Projects",
-        company: "Freelance & Personal Projects",
-        description: "Built MERN stack projects.",
-      },
-      {
-        year: "🚀 2025",
-        title: "Frontend Developer (MERN)",
-        company: "Open to Work",
-        description: "Focused on writing clean, reusable React components.",
-      },
-    ],
-  };
+  // Memoize static data
+  const aboutData = useMemo(
+    () => ({
+      title: "About Me",
+      name: "Sobur Hossen",
+      role: "MERN Stack Developer",
+      description: [
+        "I'm a passionate front-end developer with solid skills in HTML5, CSS3, JavaScript, and React.js.",
+        "In addition to my front-end expertise, I have foundational knowledge of Express.js, Node.js, and MongoDB, and I’m actively expanding my backend development skills to become a well-rounded MERN Stack developer.",
+        "I am highly motivated to learn and embrace new challenges.",
+      ],
+      stats: [
+        { number: "25+", label: "Projects Completed" },
+        { number: "1+", label: "Years Experience" },
+        { number: "5+", label: "Happy Clients" },
+        { number: "19+", label: "Technologies" },
+      ],
+      timeline: [
+        {
+          year: "🧭 Jan 2024",
+          title: "Started My Journey",
+          company: "Self-taught Developer",
+          description: "Began learning web development fundamentals.",
+        },
+        {
+          year: "🧱 Jun 2024",
+          title: "Freelance & Personal Projects",
+          company: "Freelance & Personal Projects",
+          description: "Built MERN stack projects.",
+        },
+        {
+          year: "🚀 2025",
+          title: "Frontend Developer (MERN)",
+          company: "Open to Work",
+          description: "Focused on writing clean, reusable React components.",
+        },
+      ],
+    }),
+    []
+  );
 
-  /**
-   * Generates floating background elements with random positions and properties
-   */
-  const generateFloatingElements = () => {
-    return Array.from({ length: 15 }, (_, i) => ({
+  // Memoize floating elements generation
+  const floatingElements = useMemo(() => {
+    return Array.from({ length: 10 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       top: Math.random() * 100,
-      size: Math.random() * 60 + 20,
+      size: Math.random() * 40 + 20,
       shape: Math.random() > 0.5 ? "circle" : "square",
       opacity: Math.random() * 0.1 + 0.05,
     }));
-  };
+  }, []);
 
-  const floatingElements = generateFloatingElements();
-
-  // GSAP animations setup
+  // Optimized GSAP animations
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Batch animations where possible
+      const section = sectionRef.current;
+      const commonTrigger = {
+        trigger: section,
+        toggleActions: "play none none reverse",
+      };
+
       // Floating elements animation
       floatingElementsRef.current.forEach((el, i) => {
         if (el) {
           gsap.to(el, {
-            y: "random(-50, 50)",
-            x: "random(-30, 30)",
-            rotation: "random(-180, 180)",
-            duration: "random(8, 15)",
+            y: "random(-30, 30)",
+            x: "random(-20, 20)",
+            rotation: "random(-90, 90)",
+            duration: "random(10, 15)",
             repeat: -1,
             yoyo: true,
-            ease: "power1.inOut",
-            delay: i * 0.2,
+            ease: "sine.inOut",
+            delay: i * 0.3,
           });
         }
       });
@@ -98,18 +97,15 @@ const About = () => {
       // Title animation
       gsap.fromTo(
         titleRef.current,
-        { opacity: 0, y: 100, scale: 0.8 },
+        { opacity: 0, y: 80 },
         {
           opacity: 1,
           y: 0,
-          scale: 1,
-          duration: 1.5,
+          duration: 1,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
+            ...commonTrigger,
+            start: "top 85%",
           },
         }
       );
@@ -117,19 +113,15 @@ const About = () => {
       // Image animation
       gsap.fromTo(
         imageRef.current,
-        { opacity: 0, rotationY: -90, scale: 0.8 },
+        { opacity: 0, rotationY: -45 },
         {
           opacity: 1,
           rotationY: 0,
-          scale: 1,
-          duration: 1.2,
+          duration: 0.8,
           ease: "power2.out",
-          delay: 0.3,
           scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
+            ...commonTrigger,
+            start: "top 75%",
           },
         }
       );
@@ -139,20 +131,14 @@ const About = () => {
         if (text) {
           gsap.fromTo(
             text,
-            { opacity: 0, x: 50, y: 30 },
+            { opacity: 0, y: 20 },
             {
               opacity: 1,
-              x: 0,
               y: 0,
-              duration: 1,
+              duration: 0.7,
               ease: "power2.out",
-              delay: 0.6 + i * 0.2,
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 60%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
-              },
+              delay: 0.2 + i * 0.15,
+              scrollTrigger: commonTrigger,
             }
           );
         }
@@ -163,20 +149,14 @@ const About = () => {
         if (stat) {
           gsap.fromTo(
             stat,
-            { opacity: 0, y: 50, scale: 0.5 },
+            { opacity: 0, scale: 0.8 },
             {
               opacity: 1,
-              y: 0,
               scale: 1,
-              duration: 0.8,
-              ease: "back.out(1.7)",
-              delay: 1 + i * 0.15,
-              scrollTrigger: {
-                trigger: sectionRef.current,
-                start: "top 50%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
-              },
+              duration: 0.6,
+              ease: "back.out(1.4)",
+              delay: 0.4 + i * 0.1,
+              scrollTrigger: commonTrigger,
             }
           );
 
@@ -188,20 +168,15 @@ const About = () => {
               { count: 0 },
               { count: endValue },
               {
-                duration: 2,
-                delay: 1.2 + i * 0.15,
+                duration: 1.5,
+                delay: 0.6 + i * 0.15,
                 ease: "power2.out",
                 onUpdate: function () {
                   const suffix = numberEl.textContent.replace(/\d/g, "");
                   numberEl.textContent =
                     Math.round(this.targets()[0].count) + suffix;
                 },
-                scrollTrigger: {
-                  trigger: sectionRef.current,
-                  start: "top 50%",
-                  end: "bottom 20%",
-                  toggleActions: "play none none reverse",
-                },
+                scrollTrigger: commonTrigger,
               }
             );
           }
@@ -215,20 +190,16 @@ const About = () => {
 
         gsap.fromTo(
           items,
-          { opacity: 0, x: -100, scale: 0.8 },
+          { opacity: 0, x: -50 },
           {
             opacity: 1,
             x: 0,
-            scale: 1,
-            duration: 0.8,
+            duration: 0.6,
             ease: "power2.out",
-            stagger: 0.2,
-            delay: 1.5,
+            stagger: 0.15,
             scrollTrigger: {
+              ...commonTrigger,
               trigger: timelineRef.current,
-              start: "top 70%",
-              end: "bottom 20%",
-              toggleActions: "play none none reverse",
             },
           }
         );
@@ -239,14 +210,11 @@ const About = () => {
             { scaleY: 0 },
             {
               scaleY: 1,
-              duration: 2,
+              duration: 1.5,
               ease: "power2.out",
-              delay: 1.2,
               scrollTrigger: {
+                ...commonTrigger,
                 trigger: timelineRef.current,
-                start: "top 70%",
-                end: "bottom 20%",
-                toggleActions: "play none none reverse",
               },
             }
           );
@@ -257,14 +225,35 @@ const About = () => {
     return () => ctx.revert();
   }, []);
 
+  // Memoized callback for ref assignment
+  const setTextRef = useCallback(
+    (index) => (el) => {
+      textRefs.current[index] = el;
+    },
+    []
+  );
+
+  const setStatRef = useCallback(
+    (index) => (el) => {
+      statsRefs.current[index] = el;
+    },
+    []
+  );
+
+  const setFloatingRef = useCallback(
+    (index) => (el) => {
+      floatingElementsRef.current[index] = el;
+    },
+    []
+  );
+
   return (
     <section ref={sectionRef} className="about-section">
-      {/* Floating background elements */}
       <div className="floating-background">
-        {floatingElements.map((el) => (
+        {floatingElements.map((el, index) => (
           <div
             key={el.id}
-            ref={(e) => (floatingElementsRef.current[el.id] = e)}
+            ref={setFloatingRef(index)}
             className={`floating-element ${el.shape}`}
             style={{
               left: `${el.left}%`,
@@ -286,7 +275,13 @@ const About = () => {
           <div className="about-image-section">
             <div ref={imageRef} className="about-image-container">
               <div className="profile-image-placeholder">
-                <img src={image} alt={aboutData.name} />
+                <img
+                  src={image}
+                  alt={aboutData.name}
+                  width="450"
+                  height="450"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -296,11 +291,7 @@ const About = () => {
             <p className="about-role">{aboutData.role}</p>
 
             {aboutData.description.map((para, i) => (
-              <p
-                key={i}
-                ref={(e) => (textRefs.current[i] = e)}
-                className="about-paragraph"
-              >
+              <p key={i} ref={setTextRef(i)} className="about-paragraph">
                 {para}
               </p>
             ))}
@@ -309,11 +300,7 @@ const About = () => {
 
         <div className="about-stats-container">
           {aboutData.stats.map((stat, i) => (
-            <div
-              key={i}
-              ref={(e) => (statsRefs.current[i] = e)}
-              className="stat-card"
-            >
+            <div key={i} ref={setStatRef(i)} className="stat-card">
               <div className="stat-number">{stat.number}</div>
               <div className="stat-label">{stat.label}</div>
             </div>
