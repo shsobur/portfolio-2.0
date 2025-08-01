@@ -1,8 +1,8 @@
-import image from "../../assets/image.png";
 import "./About.css";
+import image from "../../assets/image.png";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import React, { useEffect, useRef, useMemo, useCallback } from "react";
+import { useEffect, useRef, useMemo, useCallback } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,19 +37,29 @@ const About = () => {
           year: "🧭 Jan 2024",
           title: "Started My Journey",
           company: "Self-taught Developer",
-          description: "Began learning web development fundamentals.",
+          description:
+            "Began learning web development fundamentals and enrolled in the Programming Hero MERN Stack Development Course.",
         },
         {
-          year: "🧱 Jun 2024",
-          title: "Freelance & Personal Projects",
-          company: "Freelance & Personal Projects",
-          description: "Built MERN stack projects.",
+          year: "🎓 Jun 2024",
+          title: "Completed Junior MERN Stack Development",
+          company: "Programming Hero Graduate",
+          description:
+            "Finished a 6-month MERN stack course. Learned React, Node.js, Express, MongoDB, and built several course-based projects.",
+        },
+        {
+          year: "🛠️ Jun – Dec 2024",
+          title: "Personal Project Building Phase",
+          company: "Hands-On Practice",
+          description:
+            "Focused on building real-world MERN stack projects to strengthen development skills and problem-solving ability.",
         },
         {
           year: "🚀 2025",
           title: "Frontend Developer (MERN)",
           company: "Open to Work",
-          description: "Focused on writing clean, reusable React components.",
+          description:
+            "Now looking for frontend roles. Focused on writing clean, reusable React components and improving user experiences.",
         },
       ],
     }),
