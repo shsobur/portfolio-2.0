@@ -1,5 +1,6 @@
 import "./Projects.css";
-import React, { useEffect, useRef } from "react";
+import project1 from "../../assets/GlobeTrek.png";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -16,11 +17,23 @@ const Projects = () => {
   // Sample project data - you can replace with your actual projects
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "A Tourism Platform",
       description:
-        "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.",
-      tags: ["React", "Node.js", "MongoDB", "Stripe"],
-      image: "/api/placeholder/400/250",
+        "A full-stack tourism platform built with React, Node.js, Express, and MongoDB. It supports three user roles: Tourist, Tour Guide, and Admin. Key features include authentication, tour package browsing, booking system, tour guide applications, and fully functional dashboards with role-based access and CRUD operations. Designed to simulate a real-world travel service experience.",
+      tags: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Tailwind CSS",
+        "Tour Booking",
+        "Dashboard",
+        "Role-Based Access",
+        "Full-Stack",
+      ],
+      image: project1,
+      liveLink: "https://globetrek-4557f.web.app/",
+      githubLink: "https://github.com/shsobur"
     },
     {
       title: "Task Management App",
@@ -266,15 +279,21 @@ const Projects = () => {
             >
               <div className="card-inner">
                 <div className="card-front">
-                  <div className="project-image">
-                    <img src={project.image} alt={project.title} />
-                    <div className="image-overlay">
-                      <div className="overlay-content">
-                        <span className="view-project">View Project</span>
-                        <div className="project-arrow">→</div>
+                  <a
+                    target="main"
+                    href={project?.liveLink}
+                  >
+                    <div className="project-image">
+                      <img src={project.image} alt={project.title} />
+                      <div className="image-overlay">
+                        <div className="overlay-content">
+                          <span className="view-project">View Project</span>
+                          <div className="project-arrow">→</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
+
                   <div className="project-content">
                     <h3 className="project-title">{project.title}</h3>
                     <p className="project-description">{project.description}</p>
@@ -285,19 +304,18 @@ const Projects = () => {
                         </span>
                       ))}
                     </div>
+                    <div className="git_repo_btn_parent_container">
+                      <a target="main" href={project?.githubLink}>
+                        <button className="view-all-projects">
+                          GitHub Repository →
+                        </button>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="card-glow"></div>
             </a>
           ))}
-        </div>
-
-        <div className="projects-footer">
-          <a href="#" className="view-all-projects">
-            <span>View All Projects</span>
-            <div className="button-glow"></div>
-          </a>
         </div>
       </div>
 

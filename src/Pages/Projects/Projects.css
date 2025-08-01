@@ -213,8 +213,8 @@
 }
 
 .project-card:hover .card-inner {
-  border-color: rgba(139, 92, 246, 0.6);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(139, 92, 246, 0.3);
+  border-color: #8b5cf699;
+  box-shadow: 0 20px 60px #0000004d, 0 0 40px #8b5cf64d;
 }
 
 .project-card:hover .project-image img {
@@ -244,18 +244,30 @@
 }
 
 /* Projects Footer */
+.git_repo_btn_parent_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.git_repo_btn_parent_container a {
+  width: 100%;
+}
+
 .projects-footer {
   text-align: center;
 }
 
 .view-all-projects {
+  width: 100%;
   position: relative;
   display: inline-block;
-  padding: 16px 40px;
-  background: rgba(139, 92, 246, 0.1);
-  border: 2px solid rgba(139, 92, 246, 0.3);
-  border-radius: 50px;
-  color: #8b5cf6;
+  padding: 10px 40px;
+  background: #8a5cf64b;
+  border: 2px solid #8a5cf6;
+  border-radius: 8px;
+  color: #a783fc;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
