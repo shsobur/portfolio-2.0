@@ -1,13 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Contact.css";
+import { gsap } from "gsap";
+import { useRef, useEffect, useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import emailjs from "@emailjs/browser"; // ✅ EmailJS import
+import Swal from "sweetalert2";
 
 const Contact = () => {
   const sectionRef = useRef();
   const titleRef = useRef();
   const formRef = useRef();
   const socialRef = useRef();
+  const [emailLoading, setEmailLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,7 +21,7 @@ const Contact = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Title animation
+    // Animations
     gsap.fromTo(
       titleRef.current,
       { opacity: 0, y: 50 },
@@ -35,7 +39,6 @@ const Contact = () => {
       }
     );
 
-    // Form animation
     gsap.fromTo(
       formRef.current.children,
       { opacity: 0, y: 30 },
@@ -54,7 +57,6 @@ const Contact = () => {
       }
     );
 
-    // Social links animation
     gsap.fromTo(
       socialRef.current.children,
       { opacity: 0, scale: 0.5 },
@@ -73,7 +75,6 @@ const Contact = () => {
       }
     );
 
-    // Floating elements animation
     gsap.to(".contact-float", {
       y: -15,
       duration: 3,
@@ -83,7 +84,6 @@ const Contact = () => {
       stagger: 0.5,
     });
 
-    // Background particle animation
     gsap.to(".contact-particle", {
       rotation: 360,
       duration: 20,
@@ -102,10 +102,49 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    setEmailLoading(true);
 
-    // Animate submit button
+    emailjs
+      .sendForm(
+        "service_76q9ygv",
+        "template_z13mrrx",
+        formRef.current,
+        "FbrFz0QkV3fhGCuq4"
+      )
+      .then(
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          setEmailLoading(false);
+
+          const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            },
+          });
+          Toast.fire({
+            icon: "success",
+            title: "Email send successfully ✅",
+          });
+
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          setEmailLoading(false);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong! please try again again🔄",
+          });
+        }
+      );
+
     gsap.to(e.target.querySelector(".submit-btn"), {
       scale: 0.95,
       duration: 0.1,
@@ -113,12 +152,6 @@ const Contact = () => {
       repeat: 1,
       ease: "power2.out",
     });
-
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
-
-    // Show success message (you can customize this)
-    alert("Thank you! Your message has been sent.");
   };
 
   const socialLinks = [
@@ -164,7 +197,6 @@ const Contact = () => {
       </div>
 
       <div className="container">
-
         <div className="contact-content">
           <div className="contact-info">
             <div className="contact-float">
@@ -271,8 +303,14 @@ const Contact = () => {
                 />
               </div>
 
-              <button type="submit" className="submit-btn btn btn-primary">
-                <span className="btn-text">Send Message</span>
+              <button
+                disabled={emailLoading}
+                type="submit"
+                className="submit-btn btn btn-primary"
+              >
+                <span className="btn-text">
+                  {emailLoading ? "Sending email..." : "Send Message"}
+                </span>
                 <span className="btn-icon">→</span>
               </button>
             </form>
