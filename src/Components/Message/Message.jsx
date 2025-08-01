@@ -1,119 +1,116 @@
-// File path__
 import "./Message.css";
-
-// Package(GSAP)__
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useMemo } from "react";
 
-// From react__
-import { useEffect, useRef } from "react";
-
-// Register GSAP plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const Message = ({ message }) => {
-  // Refs for DOM elements
   const containerRef = useRef(null);
   const textRef = useRef(null);
   const wordsRef = useRef([]);
 
-  // Words to be animated
-  const messageWords = message.split(" ");
+  const messageWords = useMemo(() => message.split(" "), [message]);
 
-  /**
-   * Adds DOM elements to wordsRef array for animation
-   * @param {HTMLElement} el - The DOM element to add
-   */
-  const addToRefs = (el) => {
-    if (el && !wordsRef.current.includes(el)) {
-      wordsRef.current.push(el);
-    }
-  };
+  const setWordRef = useMemo(
+    () => (index) => (el) => (wordsRef.current[index] = el),
+    []
+  );
 
-  // Animation setup
   useEffect(() => {
     const container = containerRef.current;
     const text = textRef.current;
-    const words = wordsRef.current;
+    const words = wordsRef.current.filter(Boolean);
 
-    // Early return if elements not found
     if (!container || !text || words.length === 0) return;
 
-    // Set initial state for words
-    gsap.set(words, {
-      opacity: 0,
-      y: 100,
-      rotateX: 90,
-      transformOrigin: "50% 50%",
-    });
+    const ctx = gsap.context(() => {
+      gsap.set(words, {
+        opacity: 0,
+        y: 80,
+        rotateX: 60,
+        transformOrigin: "50% 50%",
+      });
 
-    // Scroll-triggered animation
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top 80%",
-        end: "bottom 20%",
-        scrub: 1,
-        onEnter: () => {
-          gsap.to(words, {
-            opacity: 1,
-            y: 0,
-            rotateX: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power2.out",
-          });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top 85%",
+          end: "bottom 20%",
+          scrub: 1.5,
         },
-      },
-    });
+      });
 
-    // Continuous floating animation
-    gsap.to(text, {
-      y: -20,
-      duration: 3,
-      ease: "power1.inOut",
-      repeat: -1,
-      yoyo: true,
-    });
+      tl.to(
+        words,
+        {
+          opacity: 1,
+          y: 0,
+          rotateX: 0,
+          stagger: 0.08,
+          ease: "power2.out",
+          duration: 0.7,
+        },
+        0
+      );
 
-    // Parallax effect on scroll
-    gsap.to(text, {
-      y: -100,
-      ease: "none",
-      scrollTrigger: {
+      const floatingAnim = gsap.to(text, {
+        y: -20,
+        duration: 4,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        modifiers: {
+          y: gsap.utils.unitize((y) => {
+            const scrollY = ScrollTrigger.getById("textReveal")?.progress || 0;
+            return parseFloat(y) - scrollY * 80;
+          }),
+        },
+      });
+
+      const bgAnim = gsap.to(container, {
+        backgroundPosition: "200% 50%",
+        duration: 12,
+        ease: "none",
+        repeat: -1,
+      });
+
+      ScrollTrigger.create({
         trigger: container,
         start: "top bottom",
         end: "bottom top",
-        scrub: 2,
-      },
-    });
+        onEnter: () => {
+          floatingAnim.play();
+          bgAnim.play();
+        },
+        onLeave: () => {
+          floatingAnim.pause();
+          bgAnim.pause();
+        },
+        onEnterBack: () => {
+          floatingAnim.play();
+          bgAnim.play();
+        },
+        onLeaveBack: () => {
+          floatingAnim.pause();
+          bgAnim.pause();
+        },
+      });
+    }, container);
 
-    // Background gradient animation
-    gsap.to(container, {
-      backgroundPosition: "200% 50%",
-      duration: 8,
-      ease: "none",
-      repeat: -1,
-    });
-
-    // Cleanup animations on unmount
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+    return () => ctx.revert();
+  }, [message]);
 
   return (
     <section ref={containerRef} className="message-section">
-      {/* Animated background elements */}
       <div className="message-bg-elements" />
 
-      {/* Main text content */}
       <div ref={textRef} className="message-text">
         <div className="message-words-container">
           {messageWords.map((word, index) => (
             <span
               key={index}
-              ref={addToRefs}
+              ref={setWordRef(index)}
               className={`message-word ${
                 index < 4 ? "gradient-light" : "gradient-colorful"
               }`}
@@ -126,13 +123,12 @@ const Message = ({ message }) => {
           ))}
         </div>
 
-        {/* Decorative dots */}
         <div className="message-dots-container">
           {[...Array(3)].map((_, i) => (
             <div
               key={i}
               className="message-dot"
-              style={{ animationDelay: `${i * 0.3}s` }}
+              style={{ animationDelay: `${i * 0.4}s` }}
             />
           ))}
         </div>

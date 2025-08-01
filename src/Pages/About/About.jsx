@@ -278,8 +278,8 @@ const About = () => {
                 <img
                   src={image}
                   alt={aboutData.name}
-                  width="450"
-                  height="450"
+                  width="520"
+                  height="520"
                   loading="lazy"
                 />
               </div>
