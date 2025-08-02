@@ -2,6 +2,7 @@
 import "./Projects.css";
 import project1 from "../../assets/GlobeTrek.png";
 import project2 from "../../assets/StudyGroup.png";
+import project3 from "../../assets/bites.png";
 
 // Package()__
 import { gsap } from "gsap";
@@ -39,7 +40,6 @@ const Projects = () => {
       ],
       image: project1,
       liveLink: "https://globetrek-4557f.web.app/",
-      githubLink: "https://github.com/shsobur",
     },
     {
       title: "Assignment Collaboration Platform",
@@ -62,41 +62,29 @@ const Projects = () => {
       githubLink: "https://github.com/shsobur",
     },
     {
-      title: "AI Chat Assistant",
+      title: "Recipe Book App",
       description:
-        "An intelligent chat assistant powered by machine learning, featuring natural language processing and context-aware responses.",
-      tags: ["Python", "TensorFlow", "FastAPI", "React"],
-      image: "/api/placeholder/400/250",
-      liveLink: "https://globetrek-4557f.web.app/",
-      githubLink: "https://github.com/shsobur",
+        "SweetBites is a full-stack recipe-sharing platform. Users can create, manage, and explore a wide variety of recipes with ease. Built using React, Node.js, Express, and MongoDB, the app features a secure authentication system with email/password and Google login. Logged-in users can add new recipes, view their own in a dedicated dashboard. Additional features include like functionality, cuisine-based filtering, update/delete options, and protected routes to ensure data privacy.",
+      tags: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Firebase",
+        "Tailwind CSS",
+        "Responsive",
+      ],
+      image: project3,
+      liveLink: "https://bites-92fe0.web.app/",
     },
-    {
-      title: "Weather Dashboard",
-      description:
-        "A responsive weather dashboard with interactive maps, forecasts, and location-based weather alerts using modern APIs.",
-      tags: ["JavaScript", "D3.js", "Weather API", "CSS3"],
-      image: "/api/placeholder/400/250",
-      liveLink: "https://globetrek-4557f.web.app/",
-      githubLink: "https://github.com/shsobur",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "A modern, responsive portfolio website with 3D animations, smooth scrolling, and optimized performance across all devices.",
-      tags: ["React", "Three.js", "GSAP", "CSS3"],
-      image: "/api/placeholder/400/250",
-      liveLink: "https://globetrek-4557f.web.app/",
-      githubLink: "https://github.com/shsobur",
-    },
-    {
-      title: "Social Media Analytics",
-      description:
-        "A comprehensive analytics dashboard for social media insights with data visualization and automated reporting features.",
-      tags: ["React", "Chart.js", "Node.js", "Redis"],
-      image: "/api/placeholder/400/250",
-      liveLink: "https://globetrek-4557f.web.app/",
-      githubLink: "https://github.com/shsobur",
-    },
+    // {
+    //   title: "Weather Dashboard",
+    //   description:
+    //     "A responsive weather dashboard with interactive maps, forecasts, and location-based weather alerts using modern APIs.",
+    //   tags: ["JavaScript", "D3.js", "Weather API", "CSS3"],
+    //   image: "/api/placeholder/400/250",
+    //   liveLink: "https://globetrek-4557f.web.app/",
+    // },
   ];
 
   useEffect(() => {
@@ -327,13 +315,6 @@ const Projects = () => {
                           {tag}
                         </span>
                       ))}
-                    </div>
-                    <div className="git_repo_btn_parent_container">
-                      <a target="main" href={project?.githubLink}>
-                        <button className="view-all-projects">
-                          GitHub Repository →
-                        </button>
-                      </a>
                     </div>
                   </div>
                 </div>

@@ -244,36 +244,6 @@
 }
 
 /* Projects Footer */
-.git_repo_btn_parent_container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.git_repo_btn_parent_container a {
-  width: 100%;
-}
-
-.projects-footer {
-  text-align: center;
-}
-
-.view-all-projects {
-  width: 100%;
-  position: relative;
-  display: inline-block;
-  padding: 10px 40px;
-  background: #8a5cf64b;
-  border: 2px solid #8a5cf6;
-  border-radius: 8px;
-  color: #a783fc;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.4s ease;
-  overflow: hidden;
-}
 
 .button-glow {
   position: absolute;
