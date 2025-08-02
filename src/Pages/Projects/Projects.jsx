@@ -1,9 +1,15 @@
+// File path__
 import "./Projects.css";
 import project1 from "../../assets/GlobeTrek.png";
-import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import project2 from "../../assets/StudyGroup.png";
+
+// Package()__
 import { gsap } from "gsap";
+import * as THREE from "three";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// From react__
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,14 +39,27 @@ const Projects = () => {
       ],
       image: project1,
       liveLink: "https://globetrek-4557f.web.app/",
-      githubLink: "https://github.com/shsobur"
+      githubLink: "https://github.com/shsobur",
     },
     {
-      title: "Task Management App",
+      title: "Assignment Collaboration Platform",
       description:
-        "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      tags: ["Vue.js", "Socket.io", "Express", "PostgreSQL"],
-      image: "/api/placeholder/400/250",
+        "A full-stack group-study application built with React, Node.js, Express, and MongoDB. Students can create, submit, and evaluate various assignments. Key features include secure authentication, difficulty-based filtering, grading, and protected routes — designed to simulate a real-time collaborative learning platform for enhanced student interaction.",
+      tags: [
+        "React",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Firebase Auth",
+        "JWT",
+        "Tailwind CSS",
+        "React AOS",
+        "CRUD",
+        "Full-Stack",
+      ],
+      image: project2,
+      liveLink: "https://study-group-cb18a.web.app/",
+      githubLink: "https://github.com/shsobur",
     },
     {
       title: "AI Chat Assistant",
@@ -48,6 +67,8 @@ const Projects = () => {
         "An intelligent chat assistant powered by machine learning, featuring natural language processing and context-aware responses.",
       tags: ["Python", "TensorFlow", "FastAPI", "React"],
       image: "/api/placeholder/400/250",
+      liveLink: "https://globetrek-4557f.web.app/",
+      githubLink: "https://github.com/shsobur",
     },
     {
       title: "Weather Dashboard",
@@ -55,6 +76,8 @@ const Projects = () => {
         "A responsive weather dashboard with interactive maps, forecasts, and location-based weather alerts using modern APIs.",
       tags: ["JavaScript", "D3.js", "Weather API", "CSS3"],
       image: "/api/placeholder/400/250",
+      liveLink: "https://globetrek-4557f.web.app/",
+      githubLink: "https://github.com/shsobur",
     },
     {
       title: "Portfolio Website",
@@ -62,6 +85,8 @@ const Projects = () => {
         "A modern, responsive portfolio website with 3D animations, smooth scrolling, and optimized performance across all devices.",
       tags: ["React", "Three.js", "GSAP", "CSS3"],
       image: "/api/placeholder/400/250",
+      liveLink: "https://globetrek-4557f.web.app/",
+      githubLink: "https://github.com/shsobur",
     },
     {
       title: "Social Media Analytics",
@@ -69,6 +94,8 @@ const Projects = () => {
         "A comprehensive analytics dashboard for social media insights with data visualization and automated reporting features.",
       tags: ["React", "Chart.js", "Node.js", "Redis"],
       image: "/api/placeholder/400/250",
+      liveLink: "https://globetrek-4557f.web.app/",
+      githubLink: "https://github.com/shsobur",
     },
   ];
 
@@ -279,10 +306,7 @@ const Projects = () => {
             >
               <div className="card-inner">
                 <div className="card-front">
-                  <a
-                    target="main"
-                    href={project?.liveLink}
-                  >
+                  <a target="main" href={project?.liveLink}>
                     <div className="project-image">
                       <img src={project.image} alt={project.title} />
                       <div className="image-overlay">
