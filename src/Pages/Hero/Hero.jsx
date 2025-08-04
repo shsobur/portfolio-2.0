@@ -155,7 +155,8 @@ const Hero = () => {
 
           <p ref={subtitleRef} className="hero-subtitle">
             I learn by building real projects. Making websites is fun… until the
-            bugs💀 show up. [Do you feel the same?]
+            bugs💀 show up. [Do you feel the same?] <br />
+            <br /> **🚧Beta version**
           </p>
 
           <div ref={ctaRef} className="hero-cta">
